@@ -44,23 +44,41 @@ export default {
       this.current = "";
     },
     sign() {
+      /**
+       * If the first character of the string is a minus, slice out the very first interger onwards to
+       * get just the intergers, which will be appended to the minus sign. Else, return the interger as
+       * is. Which is a string at this point by the way
+       */
       this.current =
         this.current.charAt(0) === "-"
           ? this.current.slice(1)
           : `-${this.current}`;
     },
     percent() {
+      /**
+       * Convert the appropriate number, which could be a decimal to a percentage by diving by 100
+       */
       this.current = `${parseFloat(this.current) / 100}`;
     },
     appendNumber(number) {
+      /**
+       * If an operator is clicked, stop keeping track of the numbers clicked by setting the current
+       * variable to "". Else, keep track of the number clicked and append it to whatever is already in
+       * the current variable
+       */
       if (this.operatorClicked) {
         this.current = "";
         this.operatorClicked = false;
+      } else {
+        this.current = `${this.current}${number}`;
       }
-      this.current = `${this.current}${number}`;
       console.log(this.current);
     },
     dot() {
+      /**
+       * If there is no decimal dot already in the interger, (again, which is a string converted to a
+       * number), append a dot after the number. If there is already a decimal dot, it will not re-append.
+       */
       if (this.current.indexOf(".") === -1) {
         this.appendNumber(".");
       }
@@ -113,15 +131,16 @@ export default {
 
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0px 25px rgba(255, 255, 255, 0.75);
 }
 
 .display {
   grid-column: 1 / -1;
-  background-color: rgb(49, 84, 145);
+  background-color: rgb(1, 94, 89);
   color: #fff;
   font-weight: 100;
   height: 8rem;
+  border-bottom: 2px solid #000;
 }
 
 .display span {
@@ -136,15 +155,16 @@ export default {
 }
 
 .button {
-  background-color: #eee;
-  border: 1px solid #999;
+  background-color: #fff;
+  border: 1px solid #000;
   cursor: pointer;
   padding: 1rem;
   text-align: center;
 }
 
 .operator {
-  background-color: rgb(244, 152, 51);
+  background-color: rgb(1, 94, 89);
   color: #fff;
+  font-weight: bold;
 }
 </style>

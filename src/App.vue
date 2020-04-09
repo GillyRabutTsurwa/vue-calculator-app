@@ -39,7 +39,7 @@ img {
   font-size: 5rem;
   text-align: center;
   margin-top: 2rem;
-  background-image: linear-gradient(#42b883, #34495e);
+  background-image: linear-gradient(#51ffb1, #6ba0d4);
   background-clip: text;
   color: transparent;
 }
